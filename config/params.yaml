@@ -1,0 +1,79 @@
+# ============================================================
+# CONFIGURATION DU PIPELINE DE DÉTECTION DES NEURONES c-Fos+
+# ============================================================
+# Ce fichier contient tous les paramètres du pipeline.
+# Les biologistes peuvent modifier les valeurs ici.
+# ============================================================
+
+# ------------------------------------------------------------
+# 1. ÉCHANTILLON À TRAITER
+#    Modifier "nom" pour chaque échantillon
+# ------------------------------------------------------------
+echantillon:
+  nom: "happsmel89"                 # ← Changer ici pour chaque échantillon
+
+# ------------------------------------------------------------
+# 2. STRUCTURE DES DOSSIERS
+#    À modifier si l'organisation change
+# ------------------------------------------------------------
+chemins:
+  base: "echantillons"              # Dossier contenant tous les échantillons
+  input: "input"                    # Dossier des images brutes
+  output: "output"                  # Dossier des résultats (images)
+  stats: "stats"                    # Dossier des statistiques (CSV)
+
+# ------------------------------------------------------------
+# 3. NOMS DES FICHIERS D'ENTRÉE
+#    L'utilisateur doit déposer ses fichiers avec ces noms
+# ------------------------------------------------------------
+fichiers:
+  image_cfos: "cfos.nrrd"           # Image canal c-Fos (obligatoire)
+  image_structure: "structure.nrrd" # Optionnel (pour masquage)
+  roi_mask: "roi_mask.nrrd"         # Optionnel (masque région d'intérêt)
+
+# ------------------------------------------------------------
+# 4. PARAMÈTRES DE PRÉTRAITEMENT
+# ------------------------------------------------------------
+preprocessing:
+  normalize_z: true                 # Activer normalisation Z (true/false)
+  median_radius: [2, 2, 2]         # Rayon filtre médian (X, Y, Z)
+  tophat_radius: [4, 4, 2]         # Rayon top-hat (X, Y, Z)
+
+# ------------------------------------------------------------
+# 5. PARAMÈTRES DE SEGMENTATION
+# ------------------------------------------------------------
+segmentation:
+  threshold_min: 70                 # Seuil minimum (c-Fos ≥ 70)
+  threshold_max: 330                # Seuil maximum (c-Fos ≤ 330)
+  dilate_radius_xy: 3               # Dilatation en X et Y (voxels)
+  dilate_radius_z: 1                # Dilatation en Z (voxels)
+
+# ------------------------------------------------------------
+# 6. PARAMÈTRES DE SÉPARATION (distance map)
+# ------------------------------------------------------------
+separation:
+  method: "danielsson"              # "danielsson" ou "maurer"
+  lower_threshold: 2                # Seuil bas (distance min)
+  upper_threshold: 3                # Seuil haut (distance max)
+  min_object_size: 5                # Taille minimale pour garder un objet
+  dilate_radius: 1                  # Rayon de dilatation après séparation
+
+# ------------------------------------------------------------
+# 7. PARAMÈTRES DE FILTRAGE
+# ------------------------------------------------------------
+filtering:
+  sphericity_min: 0.85              # Sphéricité minimale
+  elongation_max: 2.0               # Élongation maximale
+
+# ------------------------------------------------------------
+# 8. PARAMÈTRES DE SAUVEGARDE
+# ------------------------------------------------------------
+sauvegarde:
+  save_intermediate: true          # Sauvegarder étapes intermédiaires ?
+  save_deleted: true                # Sauvegarder objets supprimés ?
+
+# ------------------------------------------------------------
+# 9. PARAMÈTRES DE FUSION
+# ------------------------------------------------------------
+fusion:
+  enabled: true                     # Fusionner neurones isolés + séparés

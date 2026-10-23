@@ -1,0 +1,10 @@
+label;taille_voxels;sphericite;elongation;status
+1;393;0.8628;1.2048;neuron_isolated
+2;3305;0.5542;2.8732;neuron_multi
+3;206;0.6847;1.1011;neuron_isolated
+4;5747;0.4458;1.8469;deleted
+5;556;0.7809;1.735;neuron_isolated
+6;116;0.6308;1.0;neuron_multi
+7;9230;0.5811;3.0449;deleted
+8;196;0.5441;1.5122;neuron_multi
+9;489;0.5549;2.06;neuron_multi

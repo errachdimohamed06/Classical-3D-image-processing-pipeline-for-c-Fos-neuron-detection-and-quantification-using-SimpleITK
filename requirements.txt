@@ -1,0 +1,18 @@
+# Core
+numpy>=1.24,<2.0
+scipy>=1.10,<2.0
+scikit-image>=0.21,<1.0
+SimpleITK>=2.2,<3.0
+
+# Data and config
+pandas>=2.0,<3.0
+PyYAML>=6.0,<7.0
+
+# Image I/O
+czifile>=2019.7
+aicspylibczi>=3.0
+tifffile>=2024.1
+
+# Visualization and progress
+matplotlib>=3.7,<4.0
+tqdm>=4.65,<5.0
