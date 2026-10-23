@@ -2,7 +2,6 @@
 Pipeline principal pour la détection des neurones c-Fos+
 Utilisation : python main.py --config config.yaml
 """
-
 import sys
 import os
 import yaml
@@ -19,7 +18,6 @@ from src import filtering
 from src import fusion
 from src import statistics
 from src import utils
-
 
 def main(config_path):
     # 1. Charger la configuration
@@ -92,7 +90,7 @@ def main(config_path):
     array_multi = sitk.GetArrayFromImage(img_multi)
     
     if np.max(array_multi) > 0:
-        print(f"🔍 {int(np.max(array_multi))} objets collés détectés. Séparation en cours...")
+        print(f" {int(np.max(array_multi))} objets collés détectés. Séparation en cours...")
         
         # Séparer les neurones collés
         img_separated = filtering.separate_collapsed_neurons_by_distance_threshold_Danielson(
@@ -122,7 +120,7 @@ def main(config_path):
         nb_final = len(df_final)
         
     else:
-        print("⚠️ Aucun objet collé détecté. Séparation et fusion non nécessaires.")
+        print(" Aucun objet collé détecté. Séparation et fusion non nécessaires.")
         
         # Pas de séparation, l’image finale = neurones isolés
         img_final = img_neurons
@@ -139,10 +137,10 @@ def main(config_path):
         nb_final = len(df)
     
     # Afficher résumé final
-    print(f"\n✅ Pipeline terminé pour {echantillon_nom}")
-    print(f"📊 Nombre total de neurones détectés : {nb_final}")
-    print(f"📁 Résultats dans : {output_dir}")
-    print(f"📁 Statistiques dans : {stats_dir}")
+    print(f"\n Pipeline terminé pour {echantillon_nom}")
+    print(f" Nombre total de neurones détectés : {nb_final}")
+    print(f" Résultats dans : {output_dir}")
+    print(f" Statistiques dans : {stats_dir}")
 
 
 if __name__ == "__main__":
