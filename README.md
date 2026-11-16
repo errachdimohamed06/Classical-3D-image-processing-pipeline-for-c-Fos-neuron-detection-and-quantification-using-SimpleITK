@@ -54,7 +54,7 @@ However, automated quantification from raw 3D volumes faces several challenges:
 
 The pipeline operates on **3D volumetric images** (Z-stacks) of mouse brain acquired with a **Zeiss Lightsheet 7** microscope.
 
-A 3D image is a volumetric dataset in which each voxel has three spatial coordinates `(x, y, z)` and an intensity value. The volume is stored as a stack of optical sections and can be analyzed in depth, unlike 2D images.
+A 3D image is a volumetric dataset in which each voxel has three spatial coordinates `(x, y, z)` and an intensity value. The volume is stored as a stack of optical sections and can be analyzed in depth.
 
 | Parameter                       | Value                      |
 | ------------------------------- | -------------------------- |
